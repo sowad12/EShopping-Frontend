@@ -8,8 +8,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ServerErrorComponent } from './components/server-error/server-error.component';
 import { UnAuthenticatedComponent } from './components/un-authenticated/un-authenticated.component';
-import { StoreComponent } from './components/store/store.component';
-
+import { StoreModule } from './components/store/store.module';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,12 +18,14 @@ import { StoreComponent } from './components/store/store.component';
     NotFoundComponent,
     ServerErrorComponent,
     UnAuthenticatedComponent,
-    StoreComponent,
+
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    StoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
