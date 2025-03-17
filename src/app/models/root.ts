@@ -8,13 +8,18 @@ export interface Data<T> {
     limit: number
     size: number
   }
-//datalist with filtering
-export interface RootList<T> {
+//datalist with filtering info
+ export interface IFilterRootList<T> {
     data: Data<T>
     status: Status
   }
+  export interface IRootList<T> {
+    data: T[]
+    status: Status
+  }
+
   //single data
-  export interface Root<T> {
+  export interface IRoot<T> {
     data: T
     status: Status
   }

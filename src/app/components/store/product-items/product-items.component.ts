@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { IProduct } from 'src/app/models/catalog/product.model';
 
 @Component({
   selector: 'app-product-items',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./product-items.component.scss']
 })
 export class ProductItemsComponent {
+  @Input() product?:IProduct
 
+  addItemToBasket(){
+  
+  }
+  
 }
