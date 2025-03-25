@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
 import { IBrand } from 'src/app/models/catalog/brand.model';
 import { IProduct } from 'src/app/models/catalog/product.model';
 import { ProductsQuery } from 'src/app/models/catalog/query/get-all-product.model';
 import { IType } from 'src/app/models/catalog/type.model';
 import { IPagenation } from 'src/app/models/common/pagenation.model';
 import { StoreService } from 'src/app/services/store.service';
+
 
 @Component({
   selector: 'app-store',
@@ -27,11 +28,11 @@ export class StoreComponent {
   constructor(private storeService:StoreService){}
 
   ngOnInit(): void {
-   this.getProduct();
+   this.getProducts();
    this.getBrands();
    this.getTypes();
   }
-  getProduct(){
+  getProducts(){
     this.storeService.getProducts(this.productsQuery).subscribe(
       (response) => {
         this.productList=response.data.items;
