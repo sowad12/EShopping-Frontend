@@ -13,7 +13,7 @@ import { StoreService } from 'src/app/services/store.service';
   styleUrls: ['./store.component.scss']
 })
 export class StoreComponent {
-   totalCount:number=0;
+   total:number=0;
    limit:number=0;
    offset:number=0;
    productList=new Array<IProduct>();
@@ -34,15 +34,13 @@ export class StoreComponent {
   }
   getProducts(){
     this.storeService.getProducts(this.productsQuery).subscribe(
-      (response) => {
+      (response) => {    
         this.productList=response.data.items;
-        this.totalCount=response.data.size;
+        this.total=response.data.size;
         this.limit=response.data.limit;
-        this.offset=response.data.offset;
-      
+        this.offset=response.data.offset;    
       }, 
       (err) => console.error('Error fetching products:', err),
-      ///()=>console.log(this.productList)
     );
   }
   getBrands(){
@@ -60,10 +58,17 @@ export class StoreComponent {
     );
   }
   onBrandSelected(id:number){
-
+    this.productsQuery.brandId=id;
+    this.getProducts();
   }
   onTypeSelected(id:number){
-
+    this.productsQuery.typeId=id;
+    this.getProducts();
+  }
+  OnProductPageChange(event:IPagenation){
+    this.productsQuery.pagingOptions.limit=event.limit;
+    this.productsQuery.pagingOptions.offset=event.offset;
+    this.getProducts();
   }
   onSearch(){
 
@@ -71,5 +76,5 @@ export class StoreComponent {
   onReset(){
 
   }
-
+ 
 }

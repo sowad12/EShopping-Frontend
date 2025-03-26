@@ -5,9 +5,9 @@ export class ProductsQuery{
     brandId?: number;
     typeId?: number;
     searchQuery?: string;
-    pagingOptions?: IPagenation;
+    pagingOptions: IPagenation;
     sortOptions?: ISort;
     constructor(){
-        this.pagingOptions = this.pagingOptions || { offset: 0, limit: 10 };
+        this.pagingOptions ={ offset: 0, limit: 10 };
     }
 }

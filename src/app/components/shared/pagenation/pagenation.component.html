@@ -1,9 +1,10 @@
 <kendo-pager
       style="width: 100%;"
-      [pageSize]="pageSize"
-      [skip]="skip"
+      [pageSize]="limit"
+      [skip]="offset"
       [total]="total"
       (pageChange)="onPageChange($event)"
+      
     >
       <ng-template
         kendoPagerTemplate

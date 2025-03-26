@@ -16,18 +16,17 @@ export class StoreService {
   getProducts(productsQuery:ProductsQuery){
     let params = new HttpParams();
     if(productsQuery.brandId){
-      params.append('brandId',productsQuery.brandId)
+      params=params.append('brandId',productsQuery.brandId)
     }
     if(productsQuery.typeId){
-      params.append('typeId',productsQuery.typeId)
+      params=params.append('typeId',productsQuery.typeId)
     }
     if(productsQuery.searchQuery){
-      params.append('searchQuery',productsQuery.searchQuery)
+      params=params.append('searchQuery',productsQuery.searchQuery)
     }
-    params.append('pagingOptions.Offset',!productsQuery.pagingOptions?.offset)
-    params.append('pagingOptions.Limit',!productsQuery.pagingOptions?.limit)
-
-    return this.http.get<IFilterRootList<IProduct>>(environment.baseUrl+'catalog/get-all-products')
+     params = params.append('pagingOptions.Offset', productsQuery.pagingOptions.offset);
+     params=params.append('pagingOptions.limit',productsQuery.pagingOptions.limit)
+    return this.http.get<IFilterRootList<IProduct>>(environment.baseUrl+'catalog/get-all-products',{params})
   }
   getBrands(){
     return this.http.get<IRootList<IBrand>>(environment.baseUrl+'catalog/get-all-brands')
