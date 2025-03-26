@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { IProduct } from '../models/catalog/product.model';
-import { IFilterRootList,IRootList } from '../models/root';
+import { IFilterRootList,IRoot,IRootList } from '../models/root';
 import { IBrand } from '../models/catalog/brand.model';
 import { IType } from '../models/catalog/type.model';
 import { ProductsQuery } from '../models/catalog/query/get-all-product.model';
@@ -10,7 +10,7 @@ import { ProductsQuery } from '../models/catalog/query/get-all-product.model';
 @Injectable({
   providedIn: 'root'
 })
-export class StoreService {
+export class ProductService {
 
   constructor(private http:HttpClient ) { }
   getProducts(productsQuery:ProductsQuery){
@@ -30,6 +30,9 @@ export class StoreService {
      params = params.append('pagingOptions.Offset', productsQuery.pagingOptions.offset);
      params=params.append('pagingOptions.limit',productsQuery.pagingOptions.limit)
     return this.http.get<IFilterRootList<IProduct>>(environment.baseUrl+'catalog/get-all-products',{params})
+  }
+  getProductById(id:number){
+    return this.http.get<IRoot<IProduct>>(environment.baseUrl+`catalog/get-product?id=${id}`)
   }
   getBrands(){
     return this.http.get<IRootList<IBrand>>(environment.baseUrl+'catalog/get-all-brands')

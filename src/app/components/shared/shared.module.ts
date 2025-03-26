@@ -5,6 +5,7 @@ import { PagenationComponent } from './pagenation/pagenation.component';
 import { ServerErrorComponent } from './server-error/server-error.component';
 import { UnAuthenticatedComponent } from './un-authenticated/un-authenticated.component';
 import { PagerModule } from '@progress/kendo-angular-pager';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 @NgModule({
   declarations: [
     NotFoundComponent,
@@ -14,7 +15,8 @@ import { PagerModule } from '@progress/kendo-angular-pager';
   ],
   imports: [
     CommonModule,
-    PagerModule
+    PagerModule,
+    CarouselModule
 
   ],
   exports:[

@@ -5,24 +5,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { StoreModule } from './components/store/store.module';
+import { ProductModule } from './components/product/product.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 // import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { SharedModule } from './components/shared/shared.module';
 import { PagerModule } from '@progress/kendo-angular-pager';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule,
+    ProductModule,
     SharedModule,
     PagerModule,
     // PaginationModule.forRoot()

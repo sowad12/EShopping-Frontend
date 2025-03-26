@@ -4,15 +4,15 @@ import { IProduct } from 'src/app/models/catalog/product.model';
 import { ProductsQuery } from 'src/app/models/catalog/query/get-all-product.model';
 import { IType } from 'src/app/models/catalog/type.model';
 import { IPagenation } from 'src/app/models/common/pagenation.model';
-import { StoreService } from 'src/app/services/store.service';
+import { ProductService } from 'src/app/services/product.service';
 
 
 @Component({
-  selector: 'app-store',
-  templateUrl: './store.component.html',
-  styleUrls: ['./store.component.scss']
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.scss']
 })
-export class StoreComponent {
+export class ProductsComponent {
   @ViewChild('search')search?:ElementRef
    total:number=0;
    limit:number=0;
@@ -26,7 +26,7 @@ export class StoreComponent {
     { name: 'Price: Ascending', value: 'price asc' },
     { name: 'Price: Descending', value: 'price desc'}
   ];
-  constructor(private storeService:StoreService){}
+  constructor(private productService:ProductService){}
 
   ngOnInit(): void {
    this.getProducts();
@@ -34,7 +34,7 @@ export class StoreComponent {
    this.getTypes();
   }
   getProducts(){
-    this.storeService.getProducts(this.productsQuery).subscribe(
+    this.productService.getProducts(this.productsQuery).subscribe(
       (response) => {    
         this.productList=response.data.items;
         this.total=response.data.size;
@@ -45,14 +45,14 @@ export class StoreComponent {
     );
   }
   getBrands(){
-    this.storeService.getBrands().subscribe(
+    this.productService.getBrands().subscribe(
       (response) => this.brands=[{id:0,name:'All'},...response.data],
       (err) => console.error('Error fetching products:', err),
       // ()=>console.log(this.productList)
     );
   }
   getTypes(){
-    this.storeService.getTypes().subscribe(
+    this.productService.getTypes().subscribe(
       (response) => this.types=[{id:0,name:'All'},...response.data],
       (err) => console.error('Error fetching products:', err),
      // ()=>console.log(this.productList)
