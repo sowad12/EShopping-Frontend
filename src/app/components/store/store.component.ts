@@ -1,4 +1,4 @@
-import { Component,ViewChild } from '@angular/core';
+import { Component,ElementRef,ViewChild } from '@angular/core';
 import { IBrand } from 'src/app/models/catalog/brand.model';
 import { IProduct } from 'src/app/models/catalog/product.model';
 import { ProductsQuery } from 'src/app/models/catalog/query/get-all-product.model';
@@ -13,6 +13,7 @@ import { StoreService } from 'src/app/services/store.service';
   styleUrls: ['./store.component.scss']
 })
 export class StoreComponent {
+  @ViewChild('search')search?:ElementRef
    total:number=0;
    limit:number=0;
    offset:number=0;
@@ -21,9 +22,9 @@ export class StoreComponent {
    types:IType[]=[];
    productsQuery:ProductsQuery=new ProductsQuery()
    sortOptions = [
-    { name: 'Alphabetical', value: 'name' },
-    { name: 'Price: Ascending', value: 'priceAsc' },
-    { name: 'Price: Descending', value: 'priceDesc'}
+    { name: 'Alphabetical', value: 'name asc' },
+    { name: 'Price: Ascending', value: 'price asc' },
+    { name: 'Price: Descending', value: 'price desc'}
   ];
   constructor(private storeService:StoreService){}
 
@@ -45,14 +46,14 @@ export class StoreComponent {
   }
   getBrands(){
     this.storeService.getBrands().subscribe(
-      (response) => this.brands=response.data,
+      (response) => this.brands=[{id:0,name:'All'},...response.data],
       (err) => console.error('Error fetching products:', err),
       // ()=>console.log(this.productList)
     );
   }
   getTypes(){
     this.storeService.getTypes().subscribe(
-      (response) => this.types=response.data,
+      (response) => this.types=[{id:0,name:'All'},...response.data],
       (err) => console.error('Error fetching products:', err),
      // ()=>console.log(this.productList)
     );
@@ -70,11 +71,17 @@ export class StoreComponent {
     this.productsQuery.pagingOptions.offset=event.offset;
     this.getProducts();
   }
+  onSortSelected(event:any){
+    this.productsQuery.orderBy=event.target.value;
+    this.getProducts();
+  }
   onSearch(){
-
+    this.productsQuery.searchQuery = this.search?.nativeElement.value;
+    this.getProducts();
   }
   onReset(){
-
+    this.productsQuery=new ProductsQuery();
+    this.getProducts();
   }
  
 }

@@ -24,6 +24,9 @@ export class StoreService {
     if(productsQuery.searchQuery){
       params=params.append('searchQuery',productsQuery.searchQuery)
     }
+    if(productsQuery.orderBy){
+      params=params.append('orderBy',productsQuery.orderBy)
+    }
      params = params.append('pagingOptions.Offset', productsQuery.pagingOptions.offset);
      params=params.append('pagingOptions.limit',productsQuery.pagingOptions.limit)
     return this.http.get<IFilterRootList<IProduct>>(environment.baseUrl+'catalog/get-all-products',{params})

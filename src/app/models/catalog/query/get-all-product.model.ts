@@ -6,7 +6,8 @@ export class ProductsQuery{
     typeId?: number;
     searchQuery?: string;
     pagingOptions: IPagenation;
-    sortOptions?: ISort;
+    // sortOptions?: ISort;
+    orderBy?:string;
     constructor(){
         this.pagingOptions ={ offset: 0, limit: 10 };
     }
