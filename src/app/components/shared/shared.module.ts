@@ -5,7 +5,6 @@ import { PagenationComponent } from './pagenation/pagenation.component';
 import { ServerErrorComponent } from './server-error/server-error.component';
 import { UnAuthenticatedComponent } from './un-authenticated/un-authenticated.component';
 import { PagerModule } from '@progress/kendo-angular-pager';
-import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
@@ -17,7 +16,6 @@ import { ToastrModule } from 'ngx-toastr';
   imports: [
     CommonModule,
     PagerModule,
-    CarouselModule,
     ToastrModule.forRoot({
       positionClass: 'toast-top-center',
       preventDuplicates: true,

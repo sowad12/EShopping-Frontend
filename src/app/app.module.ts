@@ -14,6 +14,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ErrorInterceptor } from './interceptor/error.interceptor';
 import { BreadcrumbModule } from 'xng-breadcrumb';
 import { LoaderInterceptor } from './interceptor/loader.interceptor';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { LoaderInterceptor } from './interceptor/loader.interceptor';
     SharedModule,
     PagerModule,
     BreadcrumbModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    CarouselModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
