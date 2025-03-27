@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,10 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductModule } from './components/product/product.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-// import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { NgxSpinnerModule } from "ngx-spinner";
 import { SharedModule } from './components/shared/shared.module';
 import { PagerModule } from '@progress/kendo-angular-pager';
 import { HomeComponent } from './components/home/home.component';
+import { ErrorInterceptor } from './interceptor/error.interceptor';
+import { BreadcrumbModule } from 'xng-breadcrumb';
+import { LoaderInterceptor } from './interceptor/loader.interceptor';
 
 
 @NgModule({
@@ -27,9 +30,14 @@ import { HomeComponent } from './components/home/home.component';
     ProductModule,
     SharedModule,
     PagerModule,
-    // PaginationModule.forRoot()
+    BreadcrumbModule,
+    NgxSpinnerModule
   ],
-  providers: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [
+      {provide:HTTP_INTERCEPTORS,useClass:ErrorInterceptor,multi:true},      
+      {provide:HTTP_INTERCEPTORS,useClass:LoaderInterceptor,multi:true}      
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

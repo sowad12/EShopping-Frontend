@@ -17,6 +17,7 @@ export class ProductDetailsComponent {
   ){}
 
   ngOnInit(): void {
+
     this.GetProductById();
   }
   GetProductById(){

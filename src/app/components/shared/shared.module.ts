@@ -6,6 +6,7 @@ import { ServerErrorComponent } from './server-error/server-error.component';
 import { UnAuthenticatedComponent } from './un-authenticated/un-authenticated.component';
 import { PagerModule } from '@progress/kendo-angular-pager';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     NotFoundComponent,
@@ -16,8 +17,12 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
   imports: [
     CommonModule,
     PagerModule,
-    CarouselModule
-
+    CarouselModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-center',
+      preventDuplicates: true,
+      closeButton: true
+    }),
   ],
   exports:[
     NotFoundComponent,
