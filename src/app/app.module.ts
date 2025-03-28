@@ -16,6 +16,7 @@ import { LoaderInterceptor } from './interceptor/loader.interceptor';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { BasketModule } from './components/basket/basket.module';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { AccountRoutingModule } from './components/account/account-routing.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     BasketModule,
     SharedModule,
     PagerModule,
+    AccountRoutingModule,
     BreadcrumbModule,
     NgxSpinnerModule,
     CarouselModule

@@ -42,6 +42,7 @@
     "ngx-bootstrap": "^11.0.2",
     "ngx-spinner": "^16.0.2",
     "ngx-toastr": "^19.0.0",
+    "oidc-client": "^1.11.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "xng-breadcrumb": "^10.0.2",

@@ -11,6 +11,7 @@ const routes: Routes = [
  {path:'server-error',component:ServerErrorComponent},
  {path:'product', loadChildren: () => import('./components/product/product.module').then(m => m.ProductModule)},
  {path:'basket', loadChildren: () => import('./components/basket/basket.module').then(m => m.BasketModule)},
+ {path:'account', loadChildren: () => import('./components/account/account.module').then(m => m.AccountModule)},
  {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
