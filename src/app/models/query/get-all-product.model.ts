@@ -1,5 +1,5 @@
-import { IPagenation } from "../../common/pagenation.model";
-import { ISort } from "../../common/sort.model";
+import { IPagenation } from "../common/pagenation.model";
+import { ISort } from "../common/sort.model";
 
 export class ProductsQuery{
     brandId?: number;

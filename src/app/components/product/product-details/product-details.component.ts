@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IProduct } from 'src/app/models/catalog/product.model';
+import { BasketService } from 'src/app/services/basket.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -10,10 +11,11 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductDetailsComponent {
   product:IProduct;
-  quantity:number=0;
+  quantity:number=1;
   constructor(
     private productService:ProductService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private basketService:BasketService
   ){}
 
   ngOnInit(): void {
@@ -36,7 +38,9 @@ export class ProductDetailsComponent {
     }
   }
   addItemToCart(){
-
+   if(this.product){
+    this.basketService.addItemToBasket(this.product,this.quantity)
+   }
   }
  
 }

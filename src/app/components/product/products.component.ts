@@ -1,7 +1,7 @@
 import { Component,ElementRef,ViewChild } from '@angular/core';
 import { IBrand } from 'src/app/models/catalog/brand.model';
 import { IProduct } from 'src/app/models/catalog/product.model';
-import { ProductsQuery } from 'src/app/models/catalog/query/get-all-product.model';
+import { ProductsQuery } from 'src/app/models/query/get-all-product.model';
 import { IType } from 'src/app/models/catalog/type.model';
 import { IPagenation } from 'src/app/models/common/pagenation.model';
 import { ProductService } from 'src/app/services/product.service';

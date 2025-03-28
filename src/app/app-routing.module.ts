@@ -10,6 +10,7 @@ const routes: Routes = [
  {path:'un-authenticated',component:UnAuthenticatedComponent},
  {path:'server-error',component:ServerErrorComponent},
  {path:'product', loadChildren: () => import('./components/product/product.module').then(m => m.ProductModule)},
+ {path:'basket', loadChildren: () => import('./components/basket/basket.module').then(m => m.BasketModule)},
  {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 

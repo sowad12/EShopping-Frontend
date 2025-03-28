@@ -1,5 +1,5 @@
-import { IBrand } from "../brand.model"
-import { IType } from "../type.model"
+import { IBrand } from "../catalog/brand.model"
+import { IType } from "../catalog/type.model"
 
 export interface ICreateProduct{
     name: string

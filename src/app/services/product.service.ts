@@ -5,7 +5,7 @@ import { IProduct } from '../models/catalog/product.model';
 import { IFilterRootList,IRoot,IRootList } from '../models/root';
 import { IBrand } from '../models/catalog/brand.model';
 import { IType } from '../models/catalog/type.model';
-import { ProductsQuery } from '../models/catalog/query/get-all-product.model';
+import { ProductsQuery } from '../models/query/get-all-product.model';
 
 @Injectable({
   providedIn: 'root'

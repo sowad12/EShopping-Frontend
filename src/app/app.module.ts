@@ -1,6 +1,5 @@
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,13 +14,15 @@ import { ErrorInterceptor } from './interceptor/error.interceptor';
 import { BreadcrumbModule } from 'xng-breadcrumb';
 import { LoaderInterceptor } from './interceptor/loader.interceptor';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-
+import { BasketModule } from './components/basket/basket.module';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +30,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     AppRoutingModule,
     HttpClientModule,
     ProductModule,
+    BasketModule,
     SharedModule,
     PagerModule,
     BreadcrumbModule,
