@@ -7,9 +7,9 @@ export const environment = {
     // idpAuthority : "https://localhost:5006",
     // clientId : "angular-client"
     authority: "https://localhost:5006/",
-    clientId: "vue id",
-    clientSecret: "vue secret",
-    redirectUri: "http://localhost:8080/authcallback",
-    postLogoutRedirectUri: "http://localhost:8080/authcallbacksignout",
+    clientId: "angular-id",
+    clientSecret: "angular-secret",
+    redirectUri: "http://localhost:4200/authcallback",
+    postLogoutRedirectUri: "http://localhost:4200/authcallbacksignout",
 };
 

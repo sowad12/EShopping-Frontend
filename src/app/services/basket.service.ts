@@ -20,7 +20,6 @@ export class BasketService {
   constructor(private http:HttpClient) { }
 
   updateCart(basket:IBasket){
-    console.log("post",basket)
     return this.http.post<IRoot<ICartReponse>>(environment.baseUrl+`basket/update-cart`,basket).subscribe({
       next:(response) =>{
         console.log("responsepost",response.data)

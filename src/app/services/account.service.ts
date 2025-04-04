@@ -82,7 +82,13 @@ import { environment } from 'src/environments/environment.development';
 // }
 
 export class AccountService {
+private currentUserSource = new ReplaySubject<any>(1);
+  currentUser$ = this.currentUserSource.asObservable();
+  private user: User | null;
+  token = "";
+  access_token = "";
   private userManager: UserManager;
+  
   constructor() {
     const settings: UserManagerSettings = {
         userStore: new WebStorageStateStore({ store: window.localStorage }),
@@ -102,6 +108,10 @@ export class AccountService {
     this.userManager = new UserManager(settings);
 }
 
+ isAuthenticated(): boolean {
+    return this.user != null && !this.user.expired;
+ }
+
 public getUser(): Promise<User | null> {
     return this.userManager.getUser();
 }
@@ -112,16 +122,41 @@ public getManager(): UserManager {
 
 public async login() {
     const response = await this.userManager.signinRedirect();
-   
+   this.setCurrentUser();
     return response;
+}
+public async register() {
+    window.location.href = "https://localhost:5006/account/signUp"; 
 }
 
 public logout() {
-    this.userManager.signoutRedirect();
+    console.log("user",this.user)
+    this.setCurrentUser(); 
+    this.userManager.signoutRedirect({ 'id_token_hint': this.user.id_token });
+    
+    localStorage.removeItem(environment.userKey);
+    this.currentUserSource.next(null);
 }
 
 public async getAccessToken() {
     const asyncToken = await this.userManager.getUser();
     return asyncToken?.access_token;
 }
+
+setCurrentUser() {
+    this.getUser().then(user => {
+        if (user) {        
+            this.user=user;
+            localStorage.setItem(environment.userKey, JSON.stringify(user));
+            this.currentUserSource.next(user);
+        } else {
+            console.log("No user logged in");
+        }
+    }).catch(error => {
+        console.error("Error fetching user:", error);
+    });
+    
+    // localStorage.setItem(environment.userKey, JSON.stringify(user));
+    // this.currentUserSource.next(user);
+  }
 }

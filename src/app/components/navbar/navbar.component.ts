@@ -20,6 +20,9 @@ export class NavbarComponent {
   public login = () => {
     this.accountService.login();
   }
+  public register = () => {
+    this.accountService.register();
+  }
   public logout = () => {
     this.accountService.logout();
   }
